@@ -2,7 +2,9 @@
 A basic Java Rest Api using TDD.
 
 ## Prerequisites
-* MariaDB
+* JDK 11
+* MariaDB 
+* [Maven 3.8.1](https://downloads.apache.org/maven/maven-3/3.8.1/binaries/)
 ## Installation
 
 1) Create a MariaDB dataBase.
