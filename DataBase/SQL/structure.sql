@@ -1,5 +1,5 @@
 CREATE OR REPLACE TABLE product(
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id VARCHAR(100) NOT NULL,
     p_description VARCHAR(200) NOT NULL,
     number_of_searches BIGINT UNSIGNED NOT NULL DEFAULT 0,
     images VARCHAR(512) NOT NULL,
@@ -12,7 +12,7 @@ CREATE OR REPLACE TABLE category(
 );
 
 CREATE OR REPLACE TABLE productxcategory(
-    product_id BIGINT UNSIGNED NOT NULL,
+    product_id VARCHAR(100) NOT NULL,
     category_id VARCHAR(40) NOT NULL,
     PRIMARY KEY (product_id, category_id),
     FOREIGN KEY (product_id) REFERENCES product(id),
@@ -28,7 +28,7 @@ CREATE OR REPLACE TABLE country(
 );
 
 CREATE OR REPLACE TABLE productxcountry(
-    product_id BIGINT UNSIGNED NOT NULL,
+    product_id VARCHAR(100) NOT NULL,
     country_id VARCHAR(100) NOT NULL,
     price FLOAT UNSIGNED NOT NULL,
     discount_percentage FLOAT UNSIGNED NOT NULL,

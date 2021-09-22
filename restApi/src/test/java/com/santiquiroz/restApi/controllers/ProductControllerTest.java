@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProductControllerTest {
     @Test
     public void testReturnType(){
-        //Expecting a Product[] return
+        //Expecting a ListProduct return
         //Executing
         //Checking return type
 
