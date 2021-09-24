@@ -18,7 +18,7 @@ public class ProductXCountryDaoImp  implements  ProductXCountryDao{
 
 
     @Override
-    public List<ProductXCountry> getProductXCategoryByProductId(String product_id) {
+    public List<ProductXCountry> getProductXCountryByProductId(String product_id) {
         String query = "SELECT p FROM ProductXCountry p WHERE p.product_id = (?1)";
         List<ProductXCountry> productXCountry = entityManager.createQuery(query)
                 .setParameter(1,product_id)
@@ -27,7 +27,7 @@ public class ProductXCountryDaoImp  implements  ProductXCountryDao{
     }
 
     @Override
-    public List<ProductXCountry> getProductXCategoryByCountryId(String country_id) {
+    public List<ProductXCountry> getProductXCountryByCountryId(String country_id) {
         String query = "SELECT p FROM ProductXCountry p WHERE p.category_id = (?1)";
         List<ProductXCountry> productXCountry = entityManager.createQuery(query)
                 .setParameter(1,country_id)
@@ -47,22 +47,24 @@ public class ProductXCountryDaoImp  implements  ProductXCountryDao{
 
     @Override
     public void insert(ProductXCountry productXCountry) {
-        String query = "INSERT INTO productXCountry (product_id, country_id, discount_percentage, price_after_discount) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO productXCountry (product_id, country_id, discount_percentage, price_after_discount, price) VALUES (?, ?, ?, ?, ?)";
         entityManager.createNativeQuery(query)
                 .setParameter(1,productXCountry.getProduct_id())
                 .setParameter(2,productXCountry.getCountry_id())
                 .setParameter(3,productXCountry.getDiscount_percentage())
                 .setParameter(4,productXCountry.getPrice_after_discount())
+                .setParameter(5,productXCountry.getPrice())
                 .executeUpdate();
     }
 
     @Override
     public void update(ProductXCountry productXCountry) {
-
+        entityManager.merge(productXCountry);
     }
 
     @Override
     public void delete(String product_id, String country_id) {
-
+        ProductXCountry productXCountry = getProductXCountry(product_id,country_id);
+        entityManager.remove(productXCountry);
     }
 }

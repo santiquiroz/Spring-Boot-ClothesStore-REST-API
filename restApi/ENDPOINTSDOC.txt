@@ -1,0 +1,119 @@
+////////
+PRODUCT
+/////////
+MeTHOD:GET
+ROUTE:product/mostsearched/{amount}
+----------------------------
+Receives:
+urlParameters:
+-amount: the maximun most searched products that delivers.
+delivers:
+-The most searched products limited by a number
+[
+    {
+        Product: {
+            id: String,
+            p_description: String,
+            number_of_searches: Integer,
+            images: String
+        }
+        productXCategory: [{
+            product_id: String,
+            category_id: String
+        }]
+    }
+]
+----------------------------
+MeTHOD:POST
+ROUTE:product
+inserts a product
+----------------------------
+Receives:
+{
+        Product: {
+            id: String,
+            p_description: String,
+            number_of_searches: Integer,
+            images: String
+        },
+        productXCategories: [
+        {
+            product_id: String,
+            category_id: String
+        },
+        productXCountries: [
+        {
+            product_id: String,
+            country_id: String,
+            price:Float,
+            discount_percentage:Float,
+            price_after_discount: Float
+        }
+    ]
+    ],
+}
+Example:
+{
+    "product": {
+        "id": "PapitasViviana",
+        "p_description": "Papitas de limon muy acidas, mas que la lluvia acida de tu ciudad",
+        "number_of_searches": 1,
+        "images": "[hola]"
+    },
+    "productXCategories": [
+        {
+            "product_id": "PapitasViviana",
+            "category_id": "junior"
+        }
+    ],
+    "productXCountries": [
+        {
+            "product_id": "PapitasViviana",
+            "country_id": "Colombia",
+            "price":1200,
+            "discount_percentage":0.1,
+            "price_after_discount": 0.0
+        }
+    ]
+}
+urlParameters:
+delivers:
+----------------------------
+MeTHOD:PUT
+ROUTE:product
+updates a product
+----------------------------
+Receives:
+{
+        Product: {
+            id: String,
+            p_description: String,
+            number_of_searches: Integer,
+            images: String
+        }
+}
+Example:
+{
+    "id": "PapitasViviana",
+    "p_description": "Papitas de limon muy acidas, mas que la lluvia acida de tu ciudad",
+    "number_of_searches": 200,
+    "images":"[hola]"   
+}
+urlParameters:
+delivers:
+----------------------------
+MeTHOD:DELETE
+ROUTE:product
+deletes a product
+----------------------------
+Receives:
+{
+    id:String
+}
+Example:
+{
+    "id":"PapitasViviana"
+}
+urlParameters:
+delivers:
+----------------------------
