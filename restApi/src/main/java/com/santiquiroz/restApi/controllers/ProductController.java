@@ -14,9 +14,9 @@ public class ProductController {
     @Autowired
     private ProductDao productDao;
 
-    @RequestMapping(value = "product/mostsearched/{ammount}", method = RequestMethod.GET)
-    public List<Product> getMostSearched(@PathVariable Integer ammount){
-        return productDao.getMostSearched();
+    @RequestMapping(value = "product/mostsearched/{amount}", method = RequestMethod.GET)
+    public List<Product> getMostSearched(@PathVariable Integer amount){
+        return productDao.getMostSearched(amount);
     }
 
     @RequestMapping(value = "product", method = RequestMethod.POST)
@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "product", method = RequestMethod.PUT)
-    public void updateProduct(){
-        productDao.update();
+    public void updateProduct(@RequestBody Product product){
+        productDao.update(product);
     }
 }

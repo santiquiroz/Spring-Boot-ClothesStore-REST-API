@@ -9,13 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class ProductControllerTest {
     @Test
-    public void testReturnType(){
+    public void getMostSearchedReturnType(){
         //Expecting a ListProduct return
         //Executing
         //Checking return type
 
-        assertEquals(1,1);
+        assertEquals(0,0);
     }
+
 
 
 }
